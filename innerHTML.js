@@ -278,36 +278,47 @@ const data = {
 const mainNews = data.items.slice(4, 7);
 const smallNews = data.items.slice(3, 12);
 
-const mainNewsTemplate = document.getElementById('main-news');
-const smallNewsTemplate = document.getElementById('small-news');
-
 const mainNewsContainer = document.querySelector('.articles__big-col');
 const smallNewsContainer = document.querySelector('.articles__small-col');
 
 
 
 mainNews.forEach((item) => {
-	const element = mainNewsTemplate.content.cloneNode(true);
-	const category = data.categories.find((categoryItem) => categoryItem.id === item.category_id).name;
+	item.category = data.categories.find((categoryItem) => categoryItem.id === item.category_id).name;
 	const source = data.sources.find((sourceItem) => sourceItem.id === item.source_id).name;
 
-	element.querySelector('.main-article__title').textContent = item.title;
-	element.querySelector('.main-article__text').textContent = item.description;
-	element.querySelector('.main-article__category').textContent = category;
-	element.querySelector('.main-article__src').textContent = source;
-	element.querySelector('.main-article__img img').src = item.image;
+	const template = document.createElement('template');
+	template.innerHTML = `
+		<article class="main-article">
+			<div class="main-article__img">
+				<img src="${item.image}" alt="изображение новости">
+			</div>
+			<div class="main-article__content">
+				<h4 class="main-article__category">${item.category}</h4>
+				<h2 class="main-article__title line-limit">${item.title}</h2>
+				<p class="main-article__text line-limit">Новая мода на топовые наряды необычных цветов. В сезоне – топики, шорты-боксеры, сланцы и сандалии. А также большие солнечные очки и яркая шляпка.</p>
+				<span class="main-article__src">${item.source}</span>
+			</div>
+		</article>
+	`;
 
-	mainNewsContainer.appendChild(element)
+	mainNewsContainer.appendChild(template.content);
 })
 
 smallNews.forEach((item) => {
-	const element = smallNewsTemplate.content.cloneNode(true);
+	const date = new Date(item.date).toLocaleDateString('ru-RU', {month: 'long', day: 'numeric'});
 	const source = data.sources.find((sourceItem) => sourceItem.id === item.source_id).name;
-	const date = new Date(item.date).toLocaleDateString('ru-RU', {month: 'long', day: 'numeric'})
 
-	element.querySelector('.small-article__title').textContent = item.title;
-	element.querySelector('.small-article__src').textContent = source;
-	element.querySelector('.small-article__date').textContent = date;
+	const template = document.createElement('template');
+	template.innerHTML = `
+		<article class="small-article">
+			<h2 class="small-article__title line-limit">${item.title}</h2>
+			<div class="small-article__caption">
+				<p class="small-article__date">${date}</p>
+				<span class="small-article__src">${source}</span>
+			</div>
+		</article>
+	`;
 
-	smallNewsContainer.appendChild(element)
+	smallNewsContainer.appendChild(template.content);
 })
