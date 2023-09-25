@@ -281,10 +281,22 @@ const smallNews = data.items.slice(3, 12);
 const mainNewsContainer = document.querySelector('.articles__big-col');
 const smallNewsContainer = document.querySelector('.articles__small-col');
 
+const escapeString = (string) => {
+	const tagsToReplace = {
+		'&': '&amp;',
+		'<': '&lt;',
+		'>': '&gt;'
+	};
+
+	return string.replace(/[&<>]/g, function (tag) {
+		return tagsToReplace[tag] || tag;
+	});
+}
+
 
 
 mainNews.forEach((item) => {
-	item.category = data.categories.find((categoryItem) => categoryItem.id === item.category_id).name;
+	const category = data.categories.find((categoryItem) => categoryItem.id === item.category_id).name;
 	const source = data.sources.find((sourceItem) => sourceItem.id === item.source_id).name;
 
 	const template = document.createElement('template');
@@ -294,10 +306,10 @@ mainNews.forEach((item) => {
 				<img src="${item.image}" alt="изображение новости">
 			</div>
 			<div class="main-article__content">
-				<h4 class="main-article__category">${item.category}</h4>
-				<h2 class="main-article__title line-limit">${item.title}</h2>
-				<p class="main-article__text line-limit">Новая мода на топовые наряды необычных цветов. В сезоне – топики, шорты-боксеры, сланцы и сандалии. А также большие солнечные очки и яркая шляпка.</p>
-				<span class="main-article__src">${item.source}</span>
+				<h4 class="main-article__category">${escapeString(category)}</h4>
+				<h2 class="main-article__title line-limit">${escapeString(item.title)}</h2>
+				<p class="main-article__text line-limit">${escapeString(item.description)}</p>
+				<span class="main-article__src">${escapeString(source)}</span>
 			</div>
 		</article>
 	`;
@@ -312,10 +324,10 @@ smallNews.forEach((item) => {
 	const template = document.createElement('template');
 	template.innerHTML = `
 		<article class="small-article">
-			<h2 class="small-article__title line-limit">${item.title}</h2>
+			<h2 class="small-article__title line-limit">${escapeString(item.title)}</h2>
 			<div class="small-article__caption">
 				<p class="small-article__date">${date}</p>
-				<span class="small-article__src">${source}</span>
+				<span class="small-article__src">${escapeString(source)}</span>
 			</div>
 		</article>
 	`;
