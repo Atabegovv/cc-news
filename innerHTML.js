@@ -1,3 +1,4 @@
+/*
 const data = {
 	"sources": [
 		{
@@ -274,33 +275,42 @@ const data = {
 		}
 	]
 };
+*/
 
-const mainNews = data.items.slice(4, 7);
-const smallNews = data.items.slice(3, 12);
+let data = null;
 
-const mainNewsContainer = document.querySelector('.articles__big-col');
-const smallNewsContainer = document.querySelector('.articles__small-col');
+const renderNews = (category) => {
+	fetch('https://frontend.karpovcourses.net/api/v2/ru/news/')
+	.then(response => response.json())
+	.then((responseData) => {
+		data = responseData;
 
-const escapeString = (string) => {
-	const tagsToReplace = {
-		'&': '&amp;',
-		'<': '&lt;',
-		'>': '&gt;'
-	};
+		const mainNews = data.items.slice(0, 6);
+		const smallNews = data.items.slice(0, 15);
 
-	return string.replace(/[&<>]/g, function (tag) {
-		return tagsToReplace[tag] || tag;
-	});
-}
+		const mainNewsContainer = document.querySelector('.articles__big-col');
+		const smallNewsContainer = document.querySelector('.articles__small-col');
+
+		const escapeString = (string) => {
+			const tagsToReplace = {
+				'&': '&amp;',
+				'<': '&lt;',
+				'>': '&gt;'
+			};
+
+			return string.replace(/[&<>]/g, function (tag) {
+				return tagsToReplace[tag] || tag;
+			});
+		}
 
 
 
-mainNews.forEach((item) => {
-	const category = data.categories.find((categoryItem) => categoryItem.id === item.category_id).name;
-	const source = data.sources.find((sourceItem) => sourceItem.id === item.source_id).name;
+		mainNews.forEach((item) => {
+			const category = data.categories.find((categoryItem) => categoryItem.id === item.category_id).name;
+			const source = data.sources.find((sourceItem) => sourceItem.id === item.source_id).name;
 
-	const template = document.createElement('template');
-	template.innerHTML = `
+			const template = document.createElement('template');
+			template.innerHTML = `
 		<article class="main-article">
 			<div class="main-article__img">
 				<img src="${item.image}" alt="изображение новости">
@@ -314,15 +324,15 @@ mainNews.forEach((item) => {
 		</article>
 	`;
 
-	mainNewsContainer.appendChild(template.content);
-})
+			mainNewsContainer.appendChild(template.content);
+		})
 
-smallNews.forEach((item) => {
-	const date = new Date(item.date).toLocaleDateString('ru-RU', {month: 'long', day: 'numeric'});
-	const source = data.sources.find((sourceItem) => sourceItem.id === item.source_id).name;
+		smallNews.forEach((item) => {
+			const date = new Date(item.date).toLocaleDateString('ru-RU', {month: 'long', day: 'numeric'});
+			const source = data.sources.find((sourceItem) => sourceItem.id === item.source_id).name;
 
-	const template = document.createElement('template');
-	template.innerHTML = `
+			const template = document.createElement('template');
+			template.innerHTML = `
 		<article class="small-article">
 			<h2 class="small-article__title line-limit">${escapeString(item.title)}</h2>
 			<div class="small-article__caption">
@@ -332,5 +342,10 @@ smallNews.forEach((item) => {
 		</article>
 	`;
 
-	smallNewsContainer.appendChild(template.content);
-})
+			smallNewsContainer.appendChild(template.content);
+		})
+
+	})
+}
+
+renderNews();
