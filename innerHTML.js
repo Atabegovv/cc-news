@@ -311,18 +311,18 @@ const renderNews = (category) => {
 
 			const template = document.createElement('template');
 			template.innerHTML = `
-		<article class="main-article">
-			<div class="main-article__img">
-				<img src="${item.image}" alt="изображение новости">
-			</div>
-			<div class="main-article__content">
-				<h4 class="main-article__category">${escapeString(category)}</h4>
-				<h2 class="main-article__title line-limit">${escapeString(item.title)}</h2>
-				<p class="main-article__text line-limit">${escapeString(item.description)}</p>
-				<span class="main-article__src">${escapeString(source)}</span>
-			</div>
-		</article>
-	`;
+				<article class="main-article">
+					<div class="main-article__img">
+						<img src="${item.image}" alt="изображение новости">
+					</div>
+					<div class="main-article__content">
+						<h4 class="main-article__category">${escapeString(category)}</h4>
+						<h2 class="main-article__title line-limit">${escapeString(item.title)}</h2>
+						<p class="main-article__text line-limit">${escapeString(item.description)}</p>
+						<span class="main-article__src">${escapeString(source)}</span>
+					</div>
+				</article>
+			`;
 
 			mainNewsContainer.appendChild(template.content);
 		})
@@ -333,14 +333,14 @@ const renderNews = (category) => {
 
 			const template = document.createElement('template');
 			template.innerHTML = `
-		<article class="small-article">
-			<h2 class="small-article__title line-limit">${escapeString(item.title)}</h2>
-			<div class="small-article__caption">
-				<p class="small-article__date">${date}</p>
-				<span class="small-article__src">${escapeString(source)}</span>
-			</div>
-		</article>
-	`;
+				<article class="small-article">
+					<h2 class="small-article__title line-limit">${escapeString(item.title)}</h2>
+					<div class="small-article__caption">
+						<p class="small-article__date">${date}</p>
+						<span class="small-article__src">${escapeString(source)}</span>
+					</div>
+				</article>
+			`;
 
 			smallNewsContainer.appendChild(template.content);
 		})
