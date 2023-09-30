@@ -280,7 +280,7 @@ const data = {
 let data = null;
 
 const renderNews = (category) => {
-	fetch('https://frontend.karpovcourses.net/api/v2/ru/news/')
+	fetch('https://frontend.karpovcourses.net/api/v2/ru/news/' + category)
 	.then(response => response.json())
 	.then((responseData) => {
 		data = responseData;
@@ -348,4 +348,4 @@ const renderNews = (category) => {
 	})
 }
 
-renderNews();
+renderNews(2);
