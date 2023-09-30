@@ -10,7 +10,7 @@ const categoryIds = {
 const Navigation = ({onNavClick, currentCategory, className=""}) => {
 	return (
 		<nav className={`nav grid ${className}`}>
-			<a href="#" className="nav__logo" date-href="index">
+			<a href="#" className="nav__logo" data-href="index">
 				<img className="nav__logo-img" src="./images/logo.svg" alt="логотип"/>
 			</a>
 			<ul className="nav__list">
@@ -83,7 +83,7 @@ const App = () => {
 		})
 	}, [category])
 
-	console.log(articles)
+	console.log(category)
 
 	return (
 		<React.Fragment>
