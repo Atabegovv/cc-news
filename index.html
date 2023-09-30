@@ -4,53 +4,12 @@
 	<meta charset="UTF-8">
 	<title>CC-News</title>
 	<link rel="stylesheet" href="./style.css">
+	<script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
-	<header class="header">
-		<div class="container">
-			<nav class="nav grid">
-				<a href="#" class="nav__logo">
-					<img class="nav__logo-img" src="./images/logo.svg" alt="логотип">
-				</a>
-				<ul class="nav__list">
-					<li class="nav__item"><a href="#" class="nav__link nav__link--active">Главная</a></li>
-					<li class="nav__item"><a href="#" class="nav__link">Мода</a></li>
-					<li class="nav__item"><a href="#" class="nav__link">Технологии</a></li>
-					<li class="nav__item"><a href="#" class="nav__link">Музыка</a></li>
-					<li class="nav__item"><a href="#" class="nav__link">Атабегов</a></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
-
-	<main class="articles main">
-		<div class="container grid">
-			<section class="articles__big-col"></section>
-			<section class="articles__small-col"></section>
-		</div>
-	</main>
-
-	<footer class="footer">
-		<div class="container">
-			<nav class="nav grid footer__nav">
-				<a href="#" class="nav__logo">
-					<img class="nav__logo-img" src="./images/logo.svg" alt="логотип">
-				</a>
-				<ul class="nav__list">
-					<li class="nav__item"><a href="#" class="nav__link nav__link--active">Главная</a></li>
-					<li class="nav__item"><a href="#" class="nav__link">Мода</a></li>
-					<li class="nav__item"><a href="#" class="nav__link">Технологии</a></li>
-					<li class="nav__item"><a href="#" class="nav__link">Музыка</a></li>
-					<li class="nav__item"><a href="#" class="nav__link">Атабегов</a></li>
-				</ul>
-			</nav>
-			<div class="footer__col">
-				<a href="https://vk.com" class="footer__link" target="_blank">Атабегов А</a>
-				<p class="footer__copyright">© 2023</p>
-			</div>
-		</div>
-	</footer>
-
-	<script src="./innerHTML.js"></script>
+	<div id="root"></div>
+	<script type="text/babel" data-preset="react" src="./script.js"></script>
 </body>
 </html>
