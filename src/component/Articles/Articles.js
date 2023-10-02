@@ -1,7 +1,9 @@
-import MainArticle from "./MainArticle.js";
-import SmallArticle from "./SmallArticle.js";
+import React from "react";
+import MainArticle from "../MainArticle/MainArticle.js";
+import SmallArticle from "../SmallArticle/SmallArticle.js";
+import "./Articles.css";
 
-const Articles = ({articles}) => {
+const Articles = ({articles, items }) => {
 	return (
 		<main className="articles main">
 			<div className="container grid">
@@ -34,6 +36,6 @@ const Articles = ({articles}) => {
 			</div>
 		</main>
 	)
-}
+};
 
-export default Articles
+export default Articles;

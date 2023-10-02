@@ -1,3 +1,6 @@
+import React from "react";
+import "./SmallArticle.css";
+
 const SmallArticle = ({title, source, date}) => {
 	return (
 		<article className="small-article">
@@ -10,6 +13,6 @@ const SmallArticle = ({title, source, date}) => {
 			</div>
 		</article>
 	)
-}
+};
 
-export default SmallArticle
+export default SmallArticle;

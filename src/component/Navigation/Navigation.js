@@ -1,8 +1,12 @@
+import React from "react";
+import "./Navigation.css";
+import logo from "../../images/logo.svg";
+
 const Navigation = ({onNavClick, currentCategory, className=""}) => {
 	return (
 		<nav className={`nav grid ${className}`}>
 			<a href="#" className="nav__logo" data-href="index">
-				<img className="nav__logo-img" src="../images/logo.svg" alt="логотип"/>
+				<img className="nav__logo-img" src={logo} alt="логотип"/>
 			</a>
 			<ul className="nav__list">
 				{['Главная', 'Мода', 'Технологии', 'Спорт', 'Другие'].map((item) => {
@@ -22,6 +26,6 @@ const Navigation = ({onNavClick, currentCategory, className=""}) => {
 			</ul>
 		</nav>
 	)
-}
+};
 
-export default Navigation
+export default Navigation;

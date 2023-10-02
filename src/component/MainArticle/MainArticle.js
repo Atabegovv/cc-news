@@ -1,3 +1,6 @@
+import React from "react";
+import "./MainArticle.css";
+
 const MainArticle = ({title, image, description, category, source}) => {
 	return (
 		<article className="main-article">
@@ -12,6 +15,6 @@ const MainArticle = ({title, image, description, category, source}) => {
 			</div>
 		</article>
 	)
-}
+};
 
-export default MainArticle
+export default MainArticle;
