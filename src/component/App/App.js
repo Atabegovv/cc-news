@@ -25,8 +25,6 @@ const App = () => {
 		})
 	}, [category])
 
-	console.log(category)
-
 	return (
 		<React.Fragment>
 			<header className="header">
