@@ -22,6 +22,8 @@
     "webpack-dev-server": "^4.15.1"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.22.15"
+    "@babel/preset-react": "^7.22.15",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.2.2"
   }
 }
