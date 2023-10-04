@@ -2,7 +2,7 @@ import React from "react";
 import { categoryIds } from "../../utils";
 import Navigation from "../Navigation/Navigation";
 import Articles from "../Articles/Articles";
-import {Article} from "../Article/Article";
+import {ArticleItem} from "../ArticleItem/ArticleItem";
 import "./App.css";
 import {NewsAPI} from "../../types";
 
@@ -49,7 +49,7 @@ const App = () => {
 			</header>
 
 			{ articleId !== null
-				? <Article />
+				? <ArticleItem id={articleId} categories={articles.categories} sources={articles.sources} onArticleClick={onArticleClick} />
 				: <Articles articles={articles} onArticleClick={onArticleClick} />
 			}
 
