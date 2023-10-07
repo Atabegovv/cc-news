@@ -49,10 +49,5 @@
         "eslint-plugin-react": "^7.33.2",
         "ts-loader": "^9.4.4",
         "typescript": "^5.2.2"
-    },
-    "pre-commit": [
-        "stylelint",
-        "eslint",
-        "prettier-check"
-    ]
+    }
 }
