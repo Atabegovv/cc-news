@@ -17,7 +17,7 @@ const SmallArticle: FC<Props> = ({ title, source, date, onClick }) => {
                 <span className="small-article__src">{source}</span>
             </div>
         </article>
-    )
+    );
 };
 
 export default SmallArticle;

@@ -9,11 +9,11 @@ interface Props {
     className?: string;
 }
 
-const Navigation: FC<Props> = ({ onNavClick, currentCategory, className='' }) => {
+const Navigation: FC<Props> = ({ onNavClick, currentCategory, className = '' }) => {
     return (
         <nav className={`nav grid ${className}`}>
             <a href="#" className="nav__logo" data-href="index">
-                <img className="nav__logo-img" src={logo} alt="логотип"/>
+                <img className="nav__logo-img" src={logo} alt="логотип" />
             </a>
             <ul className="nav__list">
                 {['index', 'fashion', 'technologies', 'sport', 'other'].map((item) => {
@@ -29,11 +29,11 @@ const Navigation: FC<Props> = ({ onNavClick, currentCategory, className='' }) =>
                                 {categoryNames[item]}
                             </a>
                         </li>
-                    )
+                    );
                 })}
             </ul>
         </nav>
-    )
+    );
 };
 
 export default Navigation;
